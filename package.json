@@ -1,5 +1,5 @@
 {
-  "name": "bunyan-format",
+  "name": "@chlodalejandro/bunyan-format",
   "version": "0.2.1",
   "description": "Writable stream that formats bunyan records that are piped into it.",
   "main": "index.js",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thlorenz/bunyan-format.git"
+    "url": "git://github.com/ChlodAlejandro/bunyan-format.git"
   },
-  "homepage": "https://github.com/thlorenz/bunyan-format",
+  "homepage": "https://github.com/ChlodAlejandro/bunyan-format",
   "dependencies": {
     "ansistyles": "~0.1.1",
     "ansicolors": "~0.2.1"
@@ -39,7 +39,7 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/thlorenz/bunyan-format/blob/master/LICENSE"
+    "url": "https://github.com/ChlodAlejandro/bunyan-format/blob/master/LICENSE"
   },
   "engine": {
     "node": ">=8"
