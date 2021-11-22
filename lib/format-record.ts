@@ -17,6 +17,7 @@ enum OutputMode {
   simple = 4,
   short = 5,
   bunyan = 6,
+  shorter = 7
 }
 
 // Levels
@@ -173,7 +174,7 @@ export default function formatRecord(rec: any, opts: FormatRecordOptions) {
     }
   }
 
-  let short = false;
+  let short = false, shorter = false;
   let line: number = rec.line;
   let stylize = opts.color ? stylizeWithColor : stylizeWithoutColor;
   let outputMode: OutputMode = typeof opts.outputMode === 'string' ?
@@ -181,6 +182,8 @@ export default function formatRecord(rec: any, opts: FormatRecordOptions) {
     opts.outputMode;
 
   switch (outputMode) {
+    case OutputMode.shorter:
+      shorter = true;
     case OutputMode.short:
       short = true;
     /* falls through */
@@ -205,7 +208,9 @@ export default function formatRecord(rec: any, opts: FormatRecordOptions) {
 			 * case we can safely chop off the date information.
 			 */
       let time: string;
-      if (short && rec.time[10] === 'T') {
+      if (shorter) {
+        time = "";  
+      } else if (short && rec.time[10] === 'T') {
         time = rec.time.substr(11);
         time = stylize(time, 'brightBlack');
       } else {
@@ -395,7 +400,7 @@ export default function formatRecord(rec: any, opts: FormatRecordOptions) {
           onelineMsg,
           extrasStr,
           detailsStr
-        );
+        ).trimStart();
       }
       else {
         return format(
@@ -406,7 +411,7 @@ export default function formatRecord(rec: any, opts: FormatRecordOptions) {
           onelineMsg,
           extrasStr,
           detailsStr
-        );
+        ).trimStart();
       }
       break;
 
